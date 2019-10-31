@@ -109,6 +109,7 @@ function draw() {
   if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box || collision(newHead, snake)) {
     clearInterval(game);
     dead.play();
+    //score can be pulled from here
   }
 
   snake.unshift(newHead);

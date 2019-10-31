@@ -2,15 +2,73 @@
   <head>
     <title>Snake Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style media="screen">
+      input, button {
+        padding: 7px;
+        height: 40px;
+      }
+      .splitscreen {
+        display:flex;
+      }
+      .splitscreen .left {
+        flex: 1;
+      }
+      .splitscreen .right {
+        flex: 1;
+      }
+      fieldset {
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
-  <canvas id="snake" width="608" height="608"></canvas>
-  <script src="snake.js"></script>
-  <div>
-    <div style="
-    padding-left: 268;
-    padding-top: 20;
-    ">
-      <button type="button" class="btn btn-primary" onClick="window.location.reload()">New Game</button>
+  <div class="splitscreen">
+    <div class="left">
+      <canvas id="snake" width="608" height="608"></canvas>
+      <script src="snake.js"></script>
+      <div style="
+        padding-left: 268;
+        padding-top: 20;
+      ">
+        <button type="button" class="btn btn-primary" onClick="window.location.reload()">New Game</button>
+      </div>
     </div>
+
+    <div class="right">
+      <h2 id="title">Local storage js</h2>
+      <fieldset>
+        <legend>Insert Data</legend>
+        <input id="inpKey" type="text" placeholder="Enter Name...">
+<!--         <input id="inpValue" type="text" placeholder="Enter Value...">
+ -->        <button type="button" id="btnInsert">Insert Data</button>
+      </fieldset>
+      <fieldset>
+        <legend>Local Storage</legend>
+        <div id="lsOutput"></div>
+      </fieldset>
+    </div>
+
+    <script type="text/javascript">
+      const inpKey = document.getElementById("inpKey")
+      const inpValue = document.getElementById("inpValue")
+      const btnInsert = document.getElementById("btnInsert")
+      const lsOutput = document.getElementById("lsOutput")
+
+      btnInsert.onclick = function () {
+        const key = inpKey.value;
+        const value = score;
+
+        if (key && value) {
+          localStorage.setItem(key, value);
+          location.reload()
+        }
+      }
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+
+        lsOutput.innerHTML += `${key}: ${value} <br />`;
+      }
+    </script>
   </div>
 </html>
