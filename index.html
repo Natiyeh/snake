@@ -19,56 +19,87 @@
       fieldset {
         margin-bottom: 20px;
       }
+      html, body {
+        margin: 0; height: 100%; overflow: hidden
+      }
+      .scrollable {
+        height: 465px; /* or any value */
+        overflow-y: auto;
+        border: 1px solid;
+        width: 300px
+      }
+      li span {
+        position: relative;
+        left: 40px;
+        border-bottom: 2px solid;
+      }
     </style>
   </head>
-  <div class="splitscreen">
-    <div class="left">
-      <canvas id="snake" width="608" height="608"></canvas>
-      <script src="snake.js"></script>
-      <div style="
-        padding-left: 268;
-        padding-top: 20;
-      ">
-        <button type="button" class="btn btn-primary" onClick="window.location.reload()">New Game</button>
+  <body>
+    <div>
+      <h1 class="text-center">Snake</h1>
+    </div>
+    <div class="splitscreen">
+      <div class="left">
+        <canvas id="snake" width="608" height="608"></canvas>
+        <script src="snake.js"></script>
+        <div style="
+          padding-left: 268;
+          padding-top: 20;
+        ">
+        </div>
       </div>
-    </div>
 
-    <div class="right">
-      <h2 id="title">Local storage js</h2>
-      <fieldset>
-        <legend>Insert Data</legend>
-        <input id="inpKey" type="text" placeholder="Enter Name...">
-<!--         <input id="inpValue" type="text" placeholder="Enter Value...">
- -->        <button type="button" id="btnInsert">Insert Data</button>
-      </fieldset>
-      <fieldset>
-        <legend>Local Storage</legend>
-        <div id="lsOutput"></div>
-      </fieldset>
-    </div>
+      <div class="right">
+        <fieldset>
+          <input id="inpKey" type="text" placeholder="Enter Name...">
+          <button type="button" id="btnInsert">Add Score</button>
+        </fieldset>
+        <fieldset>
+          <legend>Scoreboard</legend>
+          <div class="container scrollable">
+            <ol id="lsOutput">
+            </ol>
+          </div>
+        </fieldset>
+      </div>
 
-    <script type="text/javascript">
-      const inpKey = document.getElementById("inpKey")
-      const inpValue = document.getElementById("inpValue")
-      const btnInsert = document.getElementById("btnInsert")
-      const lsOutput = document.getElementById("lsOutput")
+      <script type="text/javascript">
+        const inpKey = document.getElementById("inpKey")
+        const btnInsert = document.getElementById("btnInsert")
+        const lsOutput = document.getElementById("lsOutput")
+        let arr = []
 
-      btnInsert.onclick = function () {
-        const key = inpKey.value;
-        const value = score;
+        btnInsert.onclick = function () {
+          const key = inpKey.value;
+          const value = score;
 
-        if (key && value) {
-          localStorage.setItem(key, value);
-          location.reload()
+          if (key && value) {
+            localStorage.setItem(key, value);
+            location.reload()
+          }
         }
-      }
 
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const value = localStorage.getItem(key);
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          const value = localStorage.getItem(key);
+          arr.push(`<li /> <span /> ${value}: ${key}  <br />`)
+          arr = arr.sort().reverse();
+        }
 
-        lsOutput.innerHTML += `${key}: ${value} <br />`;
-      }
-    </script>
-  </div>
+        lsOutput.innerHTML += arr.join(' ')
+      </script>
+    </div>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
