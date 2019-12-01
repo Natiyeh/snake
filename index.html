@@ -3,95 +3,17 @@
     <title>Snake Game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style media="screen">
-      input, button {
-        padding: 7px;
-        height: 40px;
-      }
-      .splitscreen {
-        display:flex;
-      }
-      .splitscreen .left {
-        flex: 1;
-      }
-      .splitscreen .right {
-        flex: 1;
-      }
-      fieldset {
-        margin-bottom: 20px;
-      }
       html, body {
-        margin: 0; height: 100%; overflow: hidden
-      }
-      .scrollable {
-        height: 465px; /* or any value */
-        overflow-y: auto;
-        border: 1px solid;
-        width: 300px
-      }
-      li span {
-        position: relative;
-        left: 40px;
-        border-bottom: 2px solid;
+        margin: 0;
+        height: 100%;
+        overflow: hidden
       }
     </style>
   </head>
   <body>
-    <div>
-      <h1 class="text-center">Snake</h1>
-    </div>
-    <div class="splitscreen">
-      <div class="left">
-        <canvas id="snake" width="608" height="608"></canvas>
-        <script src="snake.js"></script>
-        <div style="
-          padding-left: 268;
-          padding-top: 20;
-        ">
-        </div>
-      </div>
-
-      <div class="right">
-        <fieldset>
-          <input id="inpKey" type="text" placeholder="Enter Name...">
-          <button type="button" id="btnInsert">Add Score</button>
-        </fieldset>
-        <fieldset>
-          <legend style="text-align: center;">Scoreboard</legend>
-          <div class="container scrollable">
-            <ol id="lsOutput">
-            </ol>
-          </div>
-        </fieldset>
-      </div>
-
-      <script type="text/javascript">
-        const inpKey = document.getElementById("inpKey")
-        const btnInsert = document.getElementById("btnInsert")
-        const lsOutput = document.getElementById("lsOutput")
-        let arr = []
-
-        btnInsert.onclick = function () {
-          const key = inpKey.value;
-          const value = score;
-
-          if (key && value) {
-            localStorage.setItem(key, value);
-            location.reload()
-          }
-        }
-
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          const value = localStorage.getItem(key);
-          arr.push(`<li /> <span /> ${value}: ${key}  <br />`)
-          arr = arr.sort().reverse();
-        }
-
-        lsOutput.innerHTML += arr.join(' ')
-
-
-      </script>
-    </div>
+    <h1 class="text-center">Snake</h1>
+    <canvas id="snake" width="608" height="608"></canvas>
+    <script src="snake.js"></script>
   </body>
 </html>
 
