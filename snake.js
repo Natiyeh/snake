@@ -134,8 +134,7 @@ function draw() {
   //draw the high score
   ctx.fillStyle = "white";
   ctx.font = "30px Changa one";
-  ctx.fillText("BEST " + scoreHigh, 7.5 * 32, 1.6 * box)
-  ctx.fillText("New Game", 12 * 32, 1.6 * box)
+  ctx.fillText("BEST " + scoreHigh, 15 * 32, 1.6 * box)
 }
 
 // draw function
