@@ -129,12 +129,16 @@ function draw() {
 
   //draw the score
   ctx.fillStyle = "white";
-  ctx.font = "45px Changa one";
-  ctx.fillText(score, 2 * box, 1.6 * box)
+  ctx.font = "40px Changa one";
+  ctx.fillText(score, 2 * box, 1.6 * box);
   //draw the high score
   ctx.fillStyle = "white";
   ctx.font = "30px Changa one";
-  ctx.fillText("BEST " + scoreHigh, 15 * 32, 1.6 * box)
+  ctx.fillText("BEST " + scoreHigh, 15 * 32, 1.6 * box);
+  //title
+  ctx.fillStyle = "white";
+  ctx.font = "45px Anton sans-serif"
+  ctx.fillText("SNAKE", 7.25 * box, 1.6 * box);
 }
 
 // draw function

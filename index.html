@@ -19,13 +19,19 @@
         width: 600px;
         height: 600px;
       }
+      button {
+        margin: 15px;
+      }
     </style>
   </head>
   <body>
-    <h1 class="text-center" style="font-family: 'Anton', sans-serif;">Snake</h1>
+    <div class="text-center">
+      <button onClick="window.location.reload();" type="button" class="btn btn-success btn-lg">New Game</button>
+    </div>
     <canvas id="snake" width="608" height="608"></canvas>
     <script src="snake.js"></script>
-    <button onClick="window.location.reload();">New Game</button>
   </body>
 </html>
 
+
+<h1 class="text-center" style="font-family: 'Anton', sans-serif;">Snake</h1>
