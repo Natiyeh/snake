@@ -32,7 +32,9 @@ let food = {
 }
 
 // score
+const SAVE_KEY_SCORE = "highscore" //save key for local storage of high score
 let score = 0;
+let scoreHigh = localStorage.getItem(SAVE_KEY_SCORE);
 
 // snake
 let d;
@@ -112,11 +114,21 @@ function draw() {
     //score can be pulled from here
   }
 
+  //check high score
+  if (score > scoreHigh) {
+    scoreHigh = score;
+  }
+
   snake.unshift(newHead);
 
+  //draw the score
   ctx.fillStyle = "white";
   ctx.font = "45px Changa one";
   ctx.fillText(score, 2 * box, 1.6 * box)
+  //draw the high score
+  ctx.fillStyle = "white";
+  ctx.font = "30px Changa one";
+  ctx.fillText("BEST " + scoreHigh, 7.5 * 32, 1.6 * box)
 }
 
 // draw function
